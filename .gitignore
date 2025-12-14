@@ -1,2 +1,4 @@
+# Ignore all .env files
 .env
-.env.*
+.env.local
+.env.*    # catches .env.production, .env.development, etc.
