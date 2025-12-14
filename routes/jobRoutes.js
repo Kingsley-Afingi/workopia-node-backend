@@ -61,7 +61,7 @@ router.get("/jobs", async (req, res) => {
 
     // Execute query safely
     const { rows } = await pool.query(query, params);
-
+console.log(rows, "hello")
     return res.status(200).json({
       success: true,
       count: rows.length,
