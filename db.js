@@ -23,3 +23,6 @@ export const pool = new Pool({
     ? { rejectUnauthorized: false }
     : false,
 });
+
+// this is to check if the database is connected on railway
+console.log("DB URL exists:", !!process.env.DATABASE_URL);
