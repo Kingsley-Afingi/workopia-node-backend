@@ -1,28 +1,14 @@
-// import pkg, { Pool } from "pg";
-// import dotenv from "dotenv";
-// dotenv.config();
-
-
-// export const pool = new Pool({
-//   user: process.env.PG_USER,
-//   host: process.env.PG_HOST,
-//   database: process.env.PG_DATABASE,
-//   password: process.env.PG_PASSWORD,
-//   port: Number(process.env.PG_PORT),
-// });
-
-
-import { Pool } from "pg";
+import pkg, { Pool } from "pg";
 import dotenv from "dotenv";
-
 dotenv.config();
 
+
 export const pool = new Pool({
-  connectionString: process.env.DATABASE_URL,
-  ssl: process.env.NODE_ENV === "production"
-    ? { rejectUnauthorized: false }
-    : false,
+  user: process.env.PG_USER,
+  host: process.env.PG_HOST,
+  database: process.env.PG_DATABASE,
+  password: process.env.PG_PASSWORD,
+  port: Number(process.env.PG_PORT),
 });
 
-// this is to check if the database is connected on railway
-console.log("DB URL exists:", !!process.env.DATABASE_URL);
+

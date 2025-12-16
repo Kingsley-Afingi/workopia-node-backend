@@ -5,6 +5,7 @@ import express from "express"
 
 const router = express.Router()
 
+
 router.get("/jobs/:id", async (req, res) => {
   try {
     const { id } = req.params;

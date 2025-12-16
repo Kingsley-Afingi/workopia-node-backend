@@ -1,7 +1,0 @@
-POST http://localhost:3000/jokes
-
-{
-  "setup": "Why did the backend crash?",
-  "punchline": "Because it ran out of memory."
-}
-
