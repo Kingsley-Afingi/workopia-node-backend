@@ -5,6 +5,14 @@ import authRoutes from "./routes/authRoutes.js";
 import jobRoutes from "./routes/jobRoutes.js";
 
 
+// this is for testing if database is connected 
+import { pool } from "./db.js";
+
+pool.query("SELECT 1")
+  .then(() => console.log("✅ PostgreSQL connected successfully"))
+  .catch(err => console.error("❌ PostgreSQL connection error:", err.message));
+// and it ends here 
+
 dotenv.config();
 const app = express();
 
@@ -21,20 +29,9 @@ app.use(express.json());
 app.use("/api/auth", authRoutes);
 app.use("/api", jobRoutes);
 
-// ✅ Default route
+// ✅ Default route to check if the backend is working fine 
 app.get("/", (req, res) => {
   res.send("Backend is running successfully 🚀");
-});
-
-// this is for test 
-app.get("/test-db", async (req, res) => {
-  try {
-    const result = await pool.query("SELECT NOW()");
-    res.json({ success: true, time: result.rows[0] });
-  } catch (err) {
-    console.error(err);
-    res.status(500).json({ error: "DB connection failed" });
-  }
 });
 
 const PORT = process.env.PORT || 3000

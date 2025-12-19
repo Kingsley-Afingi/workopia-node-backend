@@ -60,6 +60,8 @@ router.get("/jobs", async (req, res) => {
       query += " WHERE " + filters.join(" AND ");
     }
 
+     query += " ORDER BY created_at DESC";
+
     // Execute query safely
     const { rows } = await pool.query(query, params);
     return res.status(200).json({
